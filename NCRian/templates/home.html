@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>NCRian web application</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-green w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-green" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="{{ url_for('Home') }}" class="w3-bar-item w3-button w3-padding-large ">Home</a>
+    <a href="{{ url_for('bpps') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">My Post</a>
+    <a href="{{ url_for('overlooks') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">overlook</a>
+    <a href="{{url_for('transactions')}}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">transcation</a>
+    <a href="{{ url_for('logIn') }}" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">{{userName}}, Logout</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="{{ url_for('bpps') }}" class="w3-bar-item w3-button w3-padding-large">My Post</a>
+    <a href="{{ url_for('overlooks') }}" class="w3-bar-item w3-button w3-padding-large">overlook</a>
+    <a href="{{ url_for('transactions') }}" class="w3-bar-item w3-button w3-padding-large">transcation</a>
+    <a href="{{ url_for('logIn') }}" class="w3-bar-item w3-button w3-right w3-padding-large">{{userName}}, Logout</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-container w3-green w3-center" style="padding:128px 16px">
+  <h1 class="w3-margin w3-jumbo">NCRian</h1>
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>NCRian ecosystem</h1>
+      <h5 class="w3-padding-32">Since NCR offers banking, retails, grocery, resturants and many other information technology solutions, I decided to taking the advantage of its large influnce to build NCR ecosystem that makes all clients and users linked and connected.</h5>
+
+      <p class="w3-text-grey">This feature allows NCR cliens and users to make transctions online basing on the clients' product and service provided with users' need where also a client can be a user to other client. </p>
+	  <p class="w3-text-grey">Such as: A resturant owner client A would like to purchase supplies from a grocery store client B. This feature would do the online transcation. </p>
+	  <p class="w3-text-grey">Such as: A grocery store client A has voucher and promotion to its local business owners or publics. In this feature, sellers would post the infomation, and buyer can browse and make purchase. </p>
+    </div>
+
+    <div class="w3-third w3-center">
+      <i class="fa fa-anchor w3-padding-64 w3-text-red"></i>
+    </div>
+  </div>
+</div>
+
+<!-- Second Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-third w3-center">
+      <i class="fa fa-coffee w3-padding-64 w3-text-red w3-margin-right"></i>
+    </div>
+
+    <div class="w3-twothird">
+      <h1>Report and state inspection</h1>
+      <h5 class="w3-padding-32">For business owners, they would be able to see the analytic reports and take reaction. </h5>
+      <p class="w3-text-grey">From the report, owners can catch the peak serving time when it's busy to maximize labor utilization or reduce labor cost when it's slow.</p>
+	  <p class="w3-text-grey">Such as: A resturant or hotel owner client A provides its service near Mercedes-Benz Stadium whereas hosting a NFL game. This feature would help to scale.</p>
+	  <p class="w3-text-grey">Such as: A coffee shop client A opens when the weather is horrible. This feature would help to notify.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
+  <div class="w3-xlarge w3-padding-32">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+ </div>
+ <p>Template Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+/* Style all input fields */
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+/* Style the submit button */
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Style the container for inputs */
+.container {
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* The message box is shown when the user clicks on the password field */
+#message {
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password],input[type=email] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+input[type=text], input[type=password],input[type=email] {	border: 2px solid ;  border-style: solid;  border-color: green;}
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<form action="http://127.0.0.1:5000/login" method="POST">
+  <div class="container">
+    <h1>Register</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	
+	<label for="uname"><b>Username</b></label>
+	<input type="text" placeholder="Username" name="Username" required>
+
+
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" id="psw" placeholder="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+<br>
+    <label for="psw"><b>Password Repeat</b></label>
+    <input type="password" id="psw1"  placeholder="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+		
+	<div id="message">
+  
+  <h3>Password must contain the following:</h3>
+  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+  <p id="number" class="invalid">A <b>number</b></p>
+  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+  <p id="match" class="invalid">password should <b> match</b></p>
+</div>
+	<label for="email"><b>Email</b></label>
+    <input placeholder="Enter Email" type="email" id="myEmail" name="email" required>
+    <hr>	<br>    <h1>Input your business infomation</h1>    <hr>	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>		<label for="uname"><b>Store Name:</b></label>	<input type="text" placeholder="Momo Cafe" name="sname" required>	<br>    <label for="psw"><b>Location: street address</b></label>    <input type="text" id="street" placeholder="95 8th St NW Unit 100" name="street">	 <label for="psw"><b>city</b></label>    <input type="text" id="city" placeholder="Atlanta" name="city">	 <label for="psw"><b>state</b></label>    <input type="text" id="state" placeholder="Georgia" name="state">	<label for="psw"><b>zip code</b></label>    <input type="number" id="zc" placeholder="30309" name="zc">	<br>	<p>Click the button let us to get your coordinates, make sure you 'allow' the request</p>	<input type="button" onclick="getLocation()" value="locate me"></button>	<p id="demo"></p>	<input type="text" id="lat" placeholder="107.12" name="lat"></input>	<input type="text" id="long" placeholder="-73.452" name="long"></input>    <label for="psw"><b>Type of business: restauant,grocery,hotel,coffee shop, convenience store</b></label>    <input type="text" id="tob"  placeholder="restauant,grocery,hotel,coffee shop, convenience store" name="tob" >		<br>	<br>		Card Number:<input type="text" name="cardnumber">	Secuity code:<input type="text" name="securitycode">	Name on Card:<input type="text" name="nameoncard">	Expiration month:<input type="text" name="month">	Expiration date:<input type="text" name="date"><script>var x = document.getElementById("demo");var y = document.getElementById("lat");var z = document.getElementById("long");function getLocation() {  if (navigator.geolocation) {    navigator.geolocation.getCurrentPosition(showPosition);  } else {     x.innerHTML = "Geolocation is not supported by this browser.";  }  zipcode = document.getElementById("zc").value;  document.cookie = "zipcode="+zipcode+"; SameSite=None; Secure" ;  console.log(document.cookie);}function showPosition(position) {  x.innerHTML = "Latitude: " + position.coords.latitude +   "<br>Longitude: " + position.coords.longitude;  y.value = position.coords.latitude;  z.value = position.coords.longitude;}</script>      </div>	
+    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+	<br>
+    <button type="submit" class="registerbtn">Register</button>
+  </div>
+  
+  <div class="container signin">
+    <p>Already have an account? <a href="{{ url_for('logIn') }}" id="s1">Sign in</a>.</p>
+  </div>
+</form>
+<script>
+var myInput = document.getElementById("psw1");
+var myInput1 = document.getElementById("psw");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+var match = document.getElementById("match");
+var myEmail = document.getElementById("myEmail");
+myEmail.onkeyup=function(){
+	
+}
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+myInput1.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+
+
+// When the user clicks outside of the password field, hide the message box
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+myInput1.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = a ;
+
+myInput1.onkeyup = a ;
+
+function a() {
+  // Validate lowercase letters
+      if (document.getElementById('psw').value ==
+    document.getElementById('psw1').value) {
+    match.classList.remove("invalid");
+    match.classList.add("valid");
+  } else {
+    match.classList.remove("valid");
+    match.classList.add("invalid");
+  }
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {  
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
+  
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {  
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {  
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+  
+  // Validate length
+  if(myInput.value.length >= 8) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+
+}
+</script>
+</body>
+</html>

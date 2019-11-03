@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>NCRian web application</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+#info {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#info td, #info th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#info tr:nth-child(even){background-color: #f2f2f2;}
+
+#info tr:hover {background-color: #ddd;}
+
+#info th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-green w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-green" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="{{ url_for('Home') }}" class="w3-bar-item w3-button w3-padding-large ">Home</a>
+    <a href="{{ url_for('bpps') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">My Post</a>
+    <a href="{{ url_for('overlooks') }}" class="w3-bar-item w3-button w3-hide-small w3-white w3-padding-large w3-hover-white">overlook</a>
+    <a href="{{ url_for('transactions') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">transcation</a>
+    <a href="{{ url_for('logIn') }}" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">{{userName}}, Logout</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block  w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="{{ url_for('bpps') }}" class="w3-bar-item w3-button w3-padding-large">My Post</a>
+    <a href="{{ url_for('overlooks') }}" class="w3-bar-item w3-button w3-white w3-padding-large">overlook</a>
+    <a href="{{ url_for('transactions') }}" class="w3-bar-item w3-button w3-padding-large">transcation</a>
+    <a href="{{ url_for('logIn') }}" class="w3-bar-item w3-button w3-right w3-padding-large">{{userName}}, Logout</a>
+  </div>
+</div>
+<div>
+<br>
+<br>
+<br>
+<h1>Events that hosting near your store location:</h1>
+ <table class="table table-bordered" id="info">
+        <tr>
+            <th>Events</th>
+            <th>category</th>
+            <th>start at</th>
+			<th>end at</th>
+        </tr>
+            {%for i in range(0,len)%}
+            <tr>
+                <td>{{r[i*4]}}</td>
+                <td>{{r[i*4+1]}}</td>
+                <td>{{r[i*4+2]}}</td>
+				<td>{{r[i*4+3]}}</td>
+            </tr>
+            {%endfor%}
+    </table>
+
+</div>
+<h1>Weather in next five days</h1>
+<div class="table table-bordered" id="info">
+ <table class="table table-bordered" id="info">
+        <tr>
+            <th>Today</th>
+            <th>day 2</th>
+            <th>day 3</th>
+			<th>day 4</th>
+            <th>day 5</th>
+        </tr>
+            {%for i in range(0,len1)%}
+            <tr>
+                <td>	
+				<h4>Daylike: {{r1[i*7]}}</h4>
+                <h4>windSpeed_MPH:{{r1[i*7]}}</h4>
+                <h4>Temperture in C':{{r1[i*7]}}</h4>	
+				</td>
+
+                <td>	
+				<h4>Daylike: {{r1[i*15+3]}}</h4>
+                <h4>windSpeed_MPH:{{r1[i*15+4]}}</h4>
+                <h4>Temperture in C':{{r1[i*15+5]}}</h4>	
+				</td>
+
+                <td>	
+				<h4>Daylike: {{r1[i*15+6]}}</h4>
+                <h4>windSpeed_MPH:{{r1[i*15+7]}}</h4>
+                <h4>Temperture in C':{{r1[i*15+8]}}</h4>	
+				</td>
+
+                <td>	
+				<h4>Daylike: {{r1[i*15+9]}}</h4>
+                <h4>windSpeed_MPH:{{r1[i*15+10]}}</h4>
+                <h4>Temperture in C':{{r1[i*15+11]}}</h4>	
+				</td>
+
+                <td>	
+				<h4>Daylike: {{r1[i*15+12]}}</h4>
+                <h4>windSpeed_MPH:{{r1[i*15+13]}}</h4>
+                <h4>Temperture in C':{{r1[i*15+14]}}</h4>	
+				</td>
+            </tr>			
+            {%endfor%}
+    </table>
+</div>
+</body>
+</html>

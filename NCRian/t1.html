@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+
+  <table class="table table-bordered" id="myTable">
+        <thead>
+        <tr>
+            <th>TYPE</th>
+            <th>GEOMETRY TYPE</th>
+            <th>COORDINATES</th>
+
+        </tr>
+        </thead>
+        <tbody id="mydata">
+            {%for data in r%}
+            <tr>
+                <td>{{data.type}}</td>
+                <td>{{data.geometry.type}}</td>
+                <td>{{data.geometry.coordinates}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+</body>
+
+
+</html>

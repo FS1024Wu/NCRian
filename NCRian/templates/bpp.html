@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="jquery-3.4.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<style>
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #FFFFFF;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  text-decoration:underline;
+  
+}
+
+.sidebar a:hover{
+ text-decoration:underline;
+ }
+</style>
+<title>NCRian web application</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+<body>
+<script
+  async
+  src="https://pay.google.com/gp/p/js/pay.js"
+  onload="console.log('TODO: add onload function')">
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-green w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-green" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="{{ url_for('Home') }}" class="w3-bar-item w3-button w3-padding-large">Home</a>
+    <a href="{{ url_for('bpps') }}" class="w3-bar-item w3-button w3-hide-small w3-white w3-padding-large w3-hover-white">My Post</a>
+    <a href="{{ url_for('overlooks') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">overlook</a>
+    <a href="{{ url_for('transactions') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">transcation</a>
+    <a href="{{ url_for('logIn') }}" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">{{userName}}, Logout</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block  w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="{{ url_for('bpps') }}" class="w3-bar-item w3-button w3-white w3-padding-large">My Post</a>
+    <a href="{{ url_for('overlooks') }}" class="w3-bar-item w3-button w3-padding-large">overlook</a>
+    <a href="{{ url_for('transactions') }}" class="w3-bar-item w3-button w3-padding-large">transcation</a>
+    <a href="{{ url_for('logIn') }}" class="w3-bar-item w3-button w3-right w3-padding-large">{{userName}}, Logout</a>
+  </div>
+</div>
+<form action="/bpps" method="POST">
+<h3>Type of promotion/voucher you want to post:</h3>
+<select name="opt">
+  <option value="resturant" name="resturant">resturant</option>
+  <option value="hotel" name="hotel">hotel</option>
+  <option value="coffee" name="coffee">coffee shop</option>
+  <option value="convStore" name="convStore">convenient store</option>
+  <option value="groceryStore" name="groceryStore">grocery store</option>
+  <option value="other" name="other">other</option>
+</select>
+<label style="display:none">Enter your category:
+<input type="text" id="cat" placeholder="Banking" name="cate" value="categ"></input>
+</label>
+
+<h3>Post valid from:</h3>
+<input type="date"   value="yyyy-mm-dd" name="from" class="input-medium search-query" onkeypress="return false"></input>
+<h3>to:</h3>
+<input type="date"   value="yyyy-mm-dd" name ="to" class="input-medium search-query" onkeypress="return false"></input>
+<br>
+<h3>Original price in US dollar:</h3><input type="text" id="pi" placeholder="9.99" name="priceI"></input>
+<h3>Sell price in US dollar:</h3><input type="text" id="pa" placeholder="4.99" name="priceA"></input>
+<br>
+
+
+<h3>Upload more documents to describe: photo, video, text</h3>
+<input type = "file" name ="files[]" accept="file_extension|audio/*|video/*|image/*|media_type" multiple>
+
+
+<br>
+<input type="submit" id="upload" value="submit"></input>
+</form>
+
+
+
+<script>
+$('select').change(function(){
+     if($('select option:selected').text() == "other"){
+        $('label').show();
+     }
+     else{
+        $('label').hide();
+     }
+ });
+ </script>
+</body>
+</html>

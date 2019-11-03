@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>NCRian web application</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-green w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-green" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="{{ url_for('Home') }}" class="w3-bar-item w3-button w3-padding-large ">Home</a>
+    <a href="{{ url_for('bpps') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">My Post</a>
+    <a href="{{ url_for('overlooks') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">overlook</a>
+    <a href="{{ url_for('transactions') }}" class="w3-bar-item w3-button w3-hide-small w3-white w3-padding-large w3-hover-white">transcation</a>
+    <a href="{{ url_for('logIn') }}" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">{{userName}}, Logout</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="{{ url_for('bpps') }}" class="w3-bar-item w3-button w3-padding-large">My Post</a>
+    <a href="{{ url_for('overlooks') }}" class="w3-bar-item w3-button w3-padding-large">overlook</a>
+    <a href="{{ url_for('transactions') }}" class="w3-bar-item w3-button w3-white w3-padding-large">transcation</a>
+    <a href="{{ url_for('logIn') }}" class="w3-bar-item w3-button w3-right w3-padding-large">{{userName}}, Logout</a>
+  </div>
+</div>
+
+<br><br><br>
+<div style="overflow-x:auto;">
+<form method="POST" action="/transactions">
+  <table>
+    <tr>
+      <th>seller</th>
+      <th>available from</th>
+      <th>Expire on</th>
+      <th>Original price</th>
+      <th>sale price</th>
+      <th>Item description</th>
+      <th>Category</th>
+	  <th>Add to Card</th>
+    </tr>
+	{%for i in range(0,len)%}
+    <tr>
+		 <td>{{post[i*8+1]}}</td>
+		 <td>{{post[i*8+2]}}</td>
+		 <td>{{post[i*8+3]}}</td>
+		 <td>{{post[i*8+4]}}</td>
+		 <td>{{post[i*8+5]}}</td>
+		 <td>{{post[i*8+6]}}</td>
+		 <td>{{post[i*8+7]}}</td>
+		 <td>
+		 quantity:<INPUT type="number" min="0" name="{{post[i*8+1]}}">
+		 <INPUT type="submit" value="add to card" name="B1"> 
+		 </td>
+    </tr>
+	{%endfor%}
+  </table>
+ </form>
+</div>
+</body>
+</html>
